@@ -1,10 +1,17 @@
-import { Popover, Button } from "antd"
+import { Popover, Button, Flex } from "antd"
 import CustomAvatar from "../custom-avatar";
 import { useGetIdentity } from "@refinedev/core";
 import type {User} from '@/graphql/schema.types';
 const CurrentUser = () => {
     const {data: user} = useGetIdentity<User>()
+    const content = (
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column'
+        }}>
 
+        </div>
+    )
     return(
         <>
         <Popover
@@ -17,7 +24,8 @@ const CurrentUser = () => {
         <CustomAvatar
         name= {user?.name}
         src={user?.avatarURL}
-
+        size="default"
+        style={{cursor: 'pointer'}}
         />
         </Popover>
         </>
